@@ -1,0 +1,56 @@
+extends layout
+
+block content
+	.container
+		if(userId)
+			.w-100.text-right.pr-5
+				a.btn-sm.btn-success(href='/logout') Logout
+		h2 Characters
+		// Button to Open the Modal
+		button.btn.btn-primary(type='button', data-toggle='modal', data-target='#createModal')
+			| New Character
+		// The Modal
+		#createModal.modal.fade
+			.modal-dialog
+				.modal-content
+					// Modal Header
+					form(method='post', action='/characters/store')
+						.modal-header
+							button.close(type='button', data-dismiss='modal') ×
+						// Modal body
+						.modal-body
+							.form-group.row
+								label.col-sm-2.col-form-label(for='inputName') Name
+								.col-sm-10
+									input#inputName.form-control(name='name', type='text', placeholder='Name character')
+							.form-group.row
+								label.col-sm-2.col-form-label(for='inputClass') Class
+								.col-sm-10
+									select#inputClass.form-control(name='class')
+										option(value='fighter') Fighter
+										option(value='archer') Archer
+										option(value='wizard') Wizard
+							.form-group.row
+								label.col-sm-2.col-form-label(for='inputWeapon') Weapon
+								.col-sm-10
+									select#inputWeapon.form-control(name='weapon')
+										option(value='sword') Sword
+										option(value='spear') Spear
+										option(value='axe') Axe
+										option(value='bow') Bow
+										option(value='crossbow') Crossbow
+										option(value='dagger') Dagger
+										option(value='staff') Staff
+										option(value='wand') Wand
+						// Modal footer
+						.modal-footer
+							button.btn.btn-success(type='submit') Submit
+							button.btn.btn-danger(type='button', data-dismiss='modal') Close
+		.list-characters.row.pt-5
+			if characters.length
+				each character in characters
+					.character-child.col-4.text-center
+						a.btn-sm.btn-danger.btn-delete(href=`/characters/${character._id}/delete`) x
+						a.align-middle(href=`/characters/${character._id}`)= character.name
+				else
+					h3 No character

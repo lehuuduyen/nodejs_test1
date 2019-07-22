@@ -1,0 +1,50 @@
+.global-message {
+    position: absolute;
+    width: 300px;
+    opacity: .6;
+    top: 40px;
+    right: 40px;
+    z-index: 99;
+}
+
+.global-message .alert {
+    padding: 7.5px 10px;
+    -webkit-box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.3);
+}
+
+.global-message .closebtn {
+    float: right;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+.animate-display {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s, opacity 2s linear;
+}
+
+.hidden-animation {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.modal-dialog {
+    max-width: 700px;
+}
+
+.modal-content {
+    height: auto;
+    min-height: 100%;
+    border-radius: 0;
+}
+.character-child{
+    border: 1px solid #999;
+    min-height: 50px;
+}
+.btn-delete{
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+}

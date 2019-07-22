@@ -1,0 +1,14 @@
+extends ../layout
+
+block content
+    #formContent.col-md-5.m-auto.pt-5
+        form(method='post', action='/login')
+            .form-group
+                label(for='email') Email:
+                input#email.form-control(name='email')
+            .form-group
+                label(for='pwd') Password:
+                input#pwd.form-control(type='password', name='password')
+            button.btn.btn-primary(type='submit') Login
+
+        #formFooter

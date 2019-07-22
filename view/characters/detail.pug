@@ -1,0 +1,46 @@
+extends ../layout
+
+block content
+	#formContent.col-md-5.m-auto.pt-5
+		form(method='post', action=`/characters/${character._id}/update`)
+			.form-group.row
+				label.col-sm-2.col-form-label(for='inputName') Name
+				.col-sm-10
+					input#inputName.form-control(type='text', value=character.name, disabled='disabled')
+			.form-group.row
+				label.col-sm-2.col-form-label(for='inputClass') Class
+				.col-sm-10
+					input#inputClass.form-control(type='text', value=character.class, disabled='disabled')
+			.form-group.row
+				label.col-sm-2.col-form-label Strength
+				.col-sm-10
+					input.form-control(type='text', value=character.strength, disabled='disabled')
+			.form-group.row
+				label.col-sm-2.col-form-label Agility
+				.col-sm-10
+					input.form-control(type='text', value=character.agility, disabled='disabled')
+			.form-group.row
+				label.col-sm-2.col-form-label Knowledge
+				.col-sm-10
+					input.form-control(type='text', value=character.knowledge, disabled='disabled')
+			.form-group.row
+				label.col-sm-2.col-form-label(for='selectWeapon') Weapon
+				.col-sm-10
+					select#selectWeapon.form-control(name='weapon')
+						option(value='sword') Sword
+						option(value='spear') Spear
+						option(value='axe') Axe
+						option(value='bow') Bow
+						option(value='crossbow') Crossbow
+						option(value='dagger') Dagger
+						option(value='staff') Staff
+						option(value='wand') Wand
+			.col-6.m-auto.pt-4
+				button.btn.btn-success.w-100(type='submit') Update
+
+	#formFooter
+	script.
+		const weaponOptions = document.getElementById('selectWeapon').options;
+		for (i = 0; i < weaponOptions.length; i++) {
+			if (weaponOptions[i].value === '#{character.weapon}') weaponOptions[i].selected = true;
+		}

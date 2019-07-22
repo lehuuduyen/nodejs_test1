@@ -1,0 +1,41 @@
+doctype html
+html(lang='en')
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		link(rel='icon', href='../images/nodejsLogo.png')
+		title= title
+		link(rel='stylesheet', href='/libraries/bootstrap.min.css')
+		link(href='https://use.fontawesome.com/releases/v5.0.6/css/all.css', rel='stylesheet')
+		link(rel='stylesheet', href='/css/style.css')
+
+	body
+		.page-wrapper.chiller-theme.toggled
+
+			main.page-content
+				.container-fluid
+					.global-message
+						if success_msg != ''
+							.alert.alert-success.alert-dismissible.animate-display
+								span.closebtn(onclick="this.parentElement.classList.add('hidden-animation');\n") ×
+								|  #{success_msg}
+						if error_msg != ''
+							.alert.alert-danger.alert-dismissible.animate-display
+								span.closebtn(onclick="this.parentElement.classList.add('hidden-animation');\n") ×
+								|  #{error_msg}
+						if error != ''
+							.alert.alert-danger.alert-dismissible.animate-display
+								span.closebtn(onclick="this.parentElement.classList.add('hidden-animation');\n") ×
+								|  #{error}
+						if errors
+							each error in errors
+								.alert.alert-danger.alert-dismissible.animate-display
+									span.closebtn(onclick="this.parentElement.classList.add('hidden-animation');\n") ×
+									|  #{error.msg}
+
+					block content
+			// page-wrapper
+			script(src='/libraries/jquery.min.js')
+			script(src='/libraries/popper.min.js')
+			script(src='/libraries/bootstrap.min.js')
